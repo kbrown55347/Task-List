@@ -2,9 +2,9 @@
 
 ## Initialization
 
-- [ ] map out db table structure
 - [x] make new git branch for initializing
 - [ ] add files/folders to project directory: .gitignore, pool.js (for database connection), database.sql, client.js, server.js, jquery, html & css files
+- [ ] map out db table structure
 
 ### Front-End
 
@@ -18,8 +18,8 @@
 ### Back-End
 
 - [x] run npm init --yes
-- [ ] add 'start' script in package.json
 - [x] npm install items we need (pg, express)
+- [ ] add 'start' script in package.json
 - [ ] create SQL database named `weekend-to-do-app` through Postico, add CREATE TABLE queries to database.sql
 - [ ] implement minimum code for working Express server in server.js (require in express)
 - [ ] wire up db connection in pool.js file
