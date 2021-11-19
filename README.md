@@ -12,3 +12,6 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 
 ## Installation
 
+- Run 'npm init --yes' in terminal to create package.json file and to install node modules
+- Run 'npm install express' in terminal to install express library
+- Run 'npm install pg' in terminal
