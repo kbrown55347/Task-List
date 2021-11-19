@@ -11,7 +11,7 @@ function handleAddTask() {
         name: $('#task-name-in').val(),
         description: $('#descript-in').val(),
         date: $('#date-in').val()
-    }
+    };
     saveTask(taskToAdd);
     clearInputs();
     // console.log('In handleAddTask', taskToAdd);
@@ -33,7 +33,9 @@ function saveTask(newTask) {
         url: '/tasks',
         data: newTask    
     }).then((response) => {
-        // will call function here to render tasks onto DOM
+        console.log(response);
+        // will call function with GET route here 
+        // to render tasks onto DOM
     }).catch((error) => {
         console.error(error);
     });

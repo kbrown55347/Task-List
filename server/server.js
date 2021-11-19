@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
-// will need the following later:
-// const pool = require('./modules/pool.js');
+const taskRouter = require('./routes/task.router')
 
+app.use(express.urlencoded({extended: true}));
 app.use(express.static('server/public'));
 
 
+app.use('/tasks', taskRouter);
 
 
 // Start listening for requests on a specific port
