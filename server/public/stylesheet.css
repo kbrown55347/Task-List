@@ -1,0 +1,12 @@
+body {
+    background-color: lightgoldenrodyellow;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table th, table td {
+    padding: 0.5em;
+    text-align: left;
+}
