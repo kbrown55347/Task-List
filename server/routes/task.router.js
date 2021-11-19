@@ -16,7 +16,7 @@ taskRouter.get('/', (req, res) => {
             console.error(dbErr);
             res.sendStatus(500);
         })
-})
+});
 
 // POST Route
 taskRouter.post('/', (req, res) => {
