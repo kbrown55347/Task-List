@@ -1,7 +1,25 @@
 const express = require('express');
+const { appendFile } = require('fs');
 const taskRouter = express.Router();
 const pool = require('../modules/pool.js');
 
+
+// GET Route
+taskRouter.get('/', (req, res) => {
+    console.log('GET /tasks');
+    const text = `SELECT * FROM "taskList"`;
+    pool.query(text)
+        .then((dbRes) => {
+            res.send(dbRes.rows);
+            console.log(dbRes.rows);
+        })
+        .catch((dbErr) => {
+            console.error(dbErr);
+            res.sendStatus(500);
+        })
+})
+
+// POST Route
 taskRouter.post('/', (req, res) => {
     // console.log('adding new task', req.body);
     let newTask = req.body;

@@ -3,6 +3,7 @@ $(document).ready(onReady);
 function onReady() {
     // call function to get values on click of 'add task' button
     $('#add-btn').on('click', handleAddTask);
+    getTasks();
 };
 
 // create function to pull values from input fields
@@ -40,3 +41,16 @@ function saveTask(newTask) {
         console.error(error);
     });
 } // end saveTask
+
+// create function to wire GET '/tasks' route from server
+function getTasks() {
+    $.ajax({
+        type: 'GET',
+        url: '/tasks'
+    }).then((response) => {
+        // renderTasks function will go here
+        console.log('in getTasks', response);
+    }).catch((error) => {
+        console.log('error in GET', error);
+    });
+} // end getTasks
