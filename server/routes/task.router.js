@@ -40,7 +40,24 @@ taskRouter.post('/', (req, res) => {
 });
 
 // DELETE Route
+taskRouter.delete('/:id', (req, res) => {
+    console.log(req.params);
+    const taskIdToDelete = req.params.id; 
+    const sqlText = `
+        DELETE FROM "taskList"
+            WHERE "id"=$1;
+    `;
+    const sqlValues = [taskIdToDelete];
 
+    pool.query(sqlText, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(200);
+        })
+        .catch((dbErr) => {
+            console.error(dbErr);
+            res.sendStatus(500);
+        })
+});
 
 // PUT Route
 

@@ -81,4 +81,13 @@ function removeTask() {
     const taskIdRemove = $(this).data('id');
     // console.log(taskIdRemove);
     $(`#${taskIdRemove}`).remove();
+    $.ajax({
+        type: 'DELETE',
+        url: `/tasks/${taskIdRemove}`,
+    }).then((response) => {
+        console.log('in DELETE route', response);
+        getTasks();
+    }).catch((error) => {
+        console.log('error in DELETE', error);
+    });
 } // end removeTask
