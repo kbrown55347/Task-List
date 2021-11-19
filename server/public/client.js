@@ -17,7 +17,6 @@ function handleAddTask() {
     };
     saveTask(taskToAdd);
     clearInputs();
-    getTasks();
     // console.log('In handleAddTask', taskToAdd);
 } // end handleAddTask
 
@@ -31,15 +30,15 @@ function clearInputs() {
 
 function saveTask(newTask) {
     console.log('in saveTask');
-    // ajax POST call to server to get tasks
+    // ajax call for POST route to send
+    // new task to server
     $.ajax({
         type: 'POST',
         url: '/tasks',
         data: newTask    
     }).then((response) => {
         console.log(response);
-        // will call function with GET route here 
-        // to render tasks onto DOM
+        getTasks();
     }).catch((error) => {
         console.error(error);
     });
@@ -91,3 +90,4 @@ function removeTask() {
         console.log('error in DELETE', error);
     });
 } // end removeTask
+

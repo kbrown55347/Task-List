@@ -38,12 +38,12 @@
 
 ### Delete a Task
 
-- [ ] delete task in db
-- [ ] re-render DOM
+- [x] delete task in db
+- [x] re-render DOM
 
 ### Complete a Task
 
-- [ ] update task in db
+- [ ] update task in db - PUT route
 - [ ] should be 'checked off'
 - [ ] CSS to differentiate
 - [ ] re-render DOM
