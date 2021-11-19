@@ -14,5 +14,15 @@ function handleAddTask() {
         description: $('#descript-in').val(),
         date: $('#date-in').val()
     }
+    clearInputs();
     console.log('In handleAddTask', taskToAdd);
 } // end handleAddTask
+
+
+// create function to clear input values
+function clearInputs() {
+    $('#task-name-in').val('');
+    $('#descript-in').val('');
+    $('#date-in').val('');
+    // console.log('Inputs clear');
+} //end clearInputs
