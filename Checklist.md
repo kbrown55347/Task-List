@@ -30,11 +30,11 @@
 
 ### Create and Display Tasks
 
-- [ ] create function to take values from input fields 
-- [ ] wire PUT route (on client side) to send input info to server
-- [ ] wire PUT route on server side to have task stored in database
-- [ ] create function in client side to append each task to table on DOM with 'complete' and 'delete' buttons
-- [ ] wire GET routes to send task list from db to server to client
+- [x] create function to take values from input fields 
+- [x] wire POST route (on client side) to send input info to server
+- [x] wire POST route on server side to have task stored in database
+- [x] wire GET routes to send task list from db to server to client
+- [x] create function on client side to append each task to table on DOM with 'complete' and 'delete' buttons
 
 ### Delete a Task
 
