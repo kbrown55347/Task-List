@@ -9,7 +9,7 @@
 ### Front-End
 
 - [x] source CSS, jQuery & JS files
-- [ ] create basic HTMl layout with:
+- [x] create basic HTMl layout with:
     * input fields for new task
     * submit button
     * table to append tasks to
