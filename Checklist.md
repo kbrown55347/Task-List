@@ -34,7 +34,7 @@
 - [x] wire POST route (on client side) to send input info to server
 - [x] wire POST route on server side to have task stored in database
 - [x] wire GET routes to send task list from db to server to client
-- [ ] create function on client side to append each task to table on DOM with 'complete' and 'delete' buttons
+- [x] create function on client side to append each task to table on DOM with 'complete' and 'delete' buttons
 
 ### Delete a Task
 

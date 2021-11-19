@@ -48,9 +48,26 @@ function getTasks() {
         type: 'GET',
         url: '/tasks'
     }).then((response) => {
-        // renderTasks function will go here
-        console.log('in getTasks', response);
+        renderTasks(response);
+        // console.log('in getTasks', response);
     }).catch((error) => {
         console.log('error in GET', error);
     });
 } // end getTasks
+
+// create function to append tasks to DOM
+function renderTasks(tasks) {
+    // console.log('in renderTasks');
+    $('#viewTasks').empty();
+    for (task of tasks) {
+        $('#viewTasks').append(`
+        <tr id="${task.id}">
+        <td>${task.name}</td>
+        <td>${task.description}</td>
+        <td>${task.completeByDate}</td>
+        <td><input type="checkbox" class="checkbox" data-id="${task.id}"></input></td>
+        <td><button class="remove-btn" data-id="${task.id}">Remove</button></td>
+        </tr>
+        `)
+    } // end for of loop
+} // end renderTasks

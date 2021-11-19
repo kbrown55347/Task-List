@@ -1,5 +1,4 @@
 const express = require('express');
-const { appendFile } = require('fs');
 const taskRouter = express.Router();
 const pool = require('../modules/pool.js');
 
@@ -11,7 +10,7 @@ taskRouter.get('/', (req, res) => {
     pool.query(text)
         .then((dbRes) => {
             res.send(dbRes.rows);
-            console.log(dbRes.rows);
+            // console.log(dbRes.rows);
         })
         .catch((dbErr) => {
             console.error(dbErr);
@@ -39,6 +38,11 @@ taskRouter.post('/', (req, res) => {
             res.sendStatus(500);
         });
 });
+
+// DELETE Route
+
+
+// PUT Route
 
 
 module.exports = taskRouter;
