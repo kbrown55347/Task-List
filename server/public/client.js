@@ -5,8 +5,6 @@ function onReady() {
     $('#add-btn').on('click', handleAddTask);
 };
 
-
-
 // create function to pull values from input fields
 function handleAddTask() {
     let taskToAdd = {
@@ -14,10 +12,10 @@ function handleAddTask() {
         description: $('#descript-in').val(),
         date: $('#date-in').val()
     }
+    saveTask(taskToAdd);
     clearInputs();
-    console.log('In handleAddTask', taskToAdd);
+    // console.log('In handleAddTask', taskToAdd);
 } // end handleAddTask
-
 
 // create function to clear input values
 function clearInputs() {
@@ -26,3 +24,17 @@ function clearInputs() {
     $('#date-in').val('');
     // console.log('Inputs clear');
 } //end clearInputs
+
+function saveTask(newTask) {
+    console.log('in saveTask');
+    // ajax POST call to server to get tasks
+    $.ajax({
+        type: 'POST',
+        url: '/tasks',
+        data: newTask    
+    }).then((response) => {
+        // will call function here to render tasks onto DOM
+    }).catch((error) => {
+        console.error(error);
+    });
+} // end saveTask
