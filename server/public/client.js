@@ -3,6 +3,8 @@ $(document).ready(onReady);
 function onReady() {
     // call function to get values on click of 'add task' button
     $('#add-btn').on('click', handleAddTask);
+    // on click of delete button, call function to remove that task
+    $('#viewTasks').on('click', '.remove-btn', removeTask);
     getTasks();
 };
 
@@ -15,6 +17,7 @@ function handleAddTask() {
     };
     saveTask(taskToAdd);
     clearInputs();
+    getTasks();
     // console.log('In handleAddTask', taskToAdd);
 } // end handleAddTask
 
@@ -71,3 +74,11 @@ function renderTasks(tasks) {
         `)
     } // end for of loop
 } // end renderTasks
+
+// create function to remove task
+function removeTask() {
+    // console.log('remove me');
+    const taskIdRemove = $(this).data('id');
+    // console.log(taskIdRemove);
+    $(`#${taskIdRemove}`).remove();
+} // end removeTask
