@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
-const pool = require('../modules/pool.js');
+const pool = require('./modules/pool.js');
 
 app.use(express.static('server/public'));
 
