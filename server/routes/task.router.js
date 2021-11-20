@@ -65,7 +65,7 @@ taskRouter.put('/:id', (req, res) => {
     // console.log('req.params', req.params);
     // console.log('req.body', req.body);
     const taskToUpdate = req.params.id;
-    let completedStatus = req.body.completedStatus;
+    const completedStatus = req.body.completedStatus;
     const sqlText = `
         UPDATE "taskList"
         SET "isComplete" = $1 
@@ -77,10 +77,10 @@ taskRouter.put('/:id', (req, res) => {
     ];
 
     pool.query(sqlText, sqlValues)
-        .then((dbResult) => {
+        .then(dbResult => {
             res.sendStatus(200);
         })
-        .catch((dbErr) => {
+        .catch(dbErr => {
             console.error(dbErr);
             res.sendStatus(500);
         });

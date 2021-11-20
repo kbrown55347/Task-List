@@ -2,11 +2,11 @@ $(document).ready(onReady);
 
 function onReady() {
     // call function to get values on click of 'add task' button
+    getTasks();
     $('#add-btn').on('click', handleAddTask);
     // on click of delete button, call function to remove that task
     $('#viewTasks').on('click', '.remove-btn', removeTask);
-    $('#viewTasks').on('click', '.checkbox', handleCompleted);
-    getTasks();
+    $('#viewTasks').on('click', '.complete-btn', handleCompleted);
 };
 
 // create function to pull values from input fields
@@ -72,11 +72,12 @@ function renderTasks(tasks) {
         <td>${task.name}</td>
         <td>${task.description}</td>
         <td>${task.completeByDate}</td>
-        <td><input type="checkbox" class="checkbox" data-id="${task.id}"></input></td>
+        <td><button class="complete-btn" data-id="${task.id}" data-complete="${task.isComplete}">Completed</button></td>
         <td><button class="remove-btn" data-id="${task.id}">Remove</button></td>
         </tr>
         `)
     } // end for of loop
+    addStyling(tasks);
 } // end renderTasks
 
 // create function to remove task
@@ -101,13 +102,20 @@ function removeTask() {
 function handleCompleted() {
     // console.log('handleCompleted wired');
     const taskIdToMark = $(this).data('id');
-    const currentCompletedStatus = true;
+    let currentCompletedStatus = $(this).data('complete');
+    console.log(currentCompletedStatus);
+    if (currentCompletedStatus === true) {
+        currentCompletedStatus = false;
+    } else if (currentCompletedStatus === false) {
+        currentCompletedStatus = true;
+    };
+    console.log(currentCompletedStatus);
     $.ajax({
         type: 'PUT',
         url: `/tasks/${taskIdToMark}`,
         data: { completedStatus: currentCompletedStatus }
     }).then((res) => {
-        addStyling(taskIdToMark);
+        getTasks();
     }).catch((error) => {
         console.error(error);
     })
@@ -115,10 +123,12 @@ function handleCompleted() {
 
 
 // create function to add CSS features for completed tasks
-function addStyling(taskId) {
+function addStyling(tasks) {
+    for (let task of tasks) {
         if (task.isComplete) {
-            $(`#${taskId}`).addClass('elementComplete');
-        } else {
-            $(`#${taskId}`).removeClass('elementComplete');
+            $(`#${task.id}`).addClass('elementComplete');
+        } else if ($(`#${task.id}`).hasClass('elementComplete') && task.isComplete === false) {
+            $(`#${task.id}`).removeClass('elementComplete');
         }
-} // end addStyling
+    }
+}
