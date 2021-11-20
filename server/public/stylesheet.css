@@ -10,3 +10,8 @@ table th, table td {
     padding: 0.5em;
     text-align: left;
 }
+
+.elementComplete {
+    text-decoration: line-through;
+    background-color: lightslategray;
+}
