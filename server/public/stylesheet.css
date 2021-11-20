@@ -12,6 +12,6 @@ table th, table td {
 }
 
 .elementComplete {
-    text-decoration: line-through;
-    background-color: lightslategray;
+    background-color: lightgray;
+    
 }

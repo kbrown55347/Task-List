@@ -72,7 +72,7 @@ function renderTasks(tasks) {
         <td>${task.name}</td>
         <td>${task.description}</td>
         <td>${task.completeByDate}</td>
-        <td><button class="complete-btn" data-id="${task.id}" data-complete="${task.isComplete}">Completed</button></td>
+        <td><button class="complete-btn" data-id="${task.id}" data-complete="${task.isComplete}"><span>Completed</span></button></td>
         <td><button class="remove-btn" data-id="${task.id}">Remove</button></td>
         </tr>
         `)
