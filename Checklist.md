@@ -43,14 +43,14 @@
 
 ### Complete a Task
 
-- [ ] update task in db - PUT route
-- [ ] should be 'checked off'
-- [ ] CSS to differentiate
-- [ ] re-render DOM
+- [x] update task in db - PUT route
+- [x] should be 'checked off'
+- [x] CSS to differentiate
+- [x] re-render DOM
 
 ### Styling
 
-- [ ] style with CSS
+- [x] style with CSS
     * background color
     * font family & size
     * text color and/or background color of tasks (to show complete or not)

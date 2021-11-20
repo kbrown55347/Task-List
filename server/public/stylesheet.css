@@ -1,5 +1,26 @@
 body {
-    background-color: lightgoldenrodyellow;
+    margin: 0;
+    background-image: url(https://cdn.pixabay.com/photo/2014/03/25/16/27/sheet-297179_1280.png);
+}
+
+header {
+    background-color:#000080;
+    padding: 1.5em;
+    text-align: center;
+    color: #f8f8ff;
+    font-weight: bold;
+}
+
+h1, h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#inputs, #list-section {
+    margin: 2em;
+    padding: 1em;
+    border: 0.5em solid #000080;
+    border-radius: 5px;
+    background-color: #f8f8ff;
 }
 
 table, th, td {
@@ -12,6 +33,5 @@ table th, table td {
 }
 
 .elementComplete {
-    background-color: lightgray;
-    
+    background-color: gray;
 }
