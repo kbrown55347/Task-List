@@ -5,6 +5,7 @@ function onReady() {
     $('#add-btn').on('click', handleAddTask);
     // on click of delete button, call function to remove that task
     $('#viewTasks').on('click', '.remove-btn', removeTask);
+    $('#viewTasks').on('click', '.checkbox', handleCompleted);
     getTasks();
 };
 
@@ -13,11 +14,12 @@ function handleAddTask() {
     let taskToAdd = {
         name: $('#task-name-in').val(),
         description: $('#descript-in').val(),
-        date: $('#date-in').val()
+        date: $('#date-in').val(),
+        isComplete: false,
     };
     saveTask(taskToAdd);
     clearInputs();
-    // console.log('In handleAddTask', taskToAdd);
+    console.log('In handleAddTask', taskToAdd);
 } // end handleAddTask
 
 // create function to clear input values
@@ -35,7 +37,7 @@ function saveTask(newTask) {
     $.ajax({
         type: 'POST',
         url: '/tasks',
-        data: newTask    
+        data: newTask
     }).then((response) => {
         console.log(response);
         getTasks();
@@ -51,6 +53,9 @@ function getTasks() {
         url: '/tasks'
     }).then((response) => {
         renderTasks(response);
+        // addStyling after calling renderTasks because
+        // we need the tr of task to have specific task id
+        // addStyling(response);
         // console.log('in getTasks', response);
     }).catch((error) => {
         console.log('error in GET', error);
@@ -91,3 +96,29 @@ function removeTask() {
     });
 } // end removeTask
 
+// create function to change completed status and add CSS
+// features
+function handleCompleted() {
+    // console.log('handleCompleted wired');
+    const taskIdToMark = $(this).data('id');
+    const currentCompletedStatus = true;
+    $.ajax({
+        type: 'PUT',
+        url: `/tasks/${taskIdToMark}`,
+        data: { completedStatus: currentCompletedStatus }
+    }).then((res) => {
+        addStyling(taskIdToMark);
+    }).catch((error) => {
+        console.error(error);
+    })
+} // end handleCompleted
+
+
+// create function to add CSS features for completed tasks
+function addStyling(taskId) {
+        if (task.isComplete) {
+            $(`#${taskId}`).addClass('elementComplete');
+        } else {
+            $(`#${taskId}`).removeClass('elementComplete');
+        }
+} // end addStyling
