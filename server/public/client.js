@@ -6,7 +6,9 @@ function onReady() {
     $('#add-btn').on('click', handleAddTask);
     // on click of delete button, call function to remove that task
     $('#viewTasks').on('click', '.remove-btn', removeTask);
-    $('#viewTasks').on('click', '.complete-btn', handleCompleted);
+    $('#viewTasks').on('click', '.checkbox-in', handleCompleted);
+    // $('#viewTasks').on('click', '.checkbox-in', handleCompleted);
+    // $('#viewTasks').change('click', '.checkbox-in');
 };
 
 // create function to pull values from input fields
@@ -67,16 +69,27 @@ function renderTasks(tasks) {
     // console.log('in renderTasks');
     $('#viewTasks').empty();
     for (task of tasks) {
-        $('#viewTasks').append(`
-        <tr id="${task.id}">
-        <td>${task.name}</td>
-        <td>${task.description}</td>
-        <td>${task.completeByDate}</td>
-        <td><button class="complete-btn" data-id="${task.id}" data-complete="${task.isComplete}"><span>Completed</span></button></td>
-        <td><button class="remove-btn" data-id="${task.id}">Remove</button></td>
-        </tr>
-        `)
-    } // end for of loop
+        if (task.isComplete) {
+            $('#viewTasks').append(`
+            <tr id="${task.id}">
+            <td>${task.name}</td>
+            <td>${task.description}</td>
+            <td>${task.completeByDate}</td>
+            <td><input type="checkbox" class="checkbox-in" data-id="${task.id}" data-complete="${task.isComplete}" checked></input></td>
+            <td><button class="remove-btn" data-id="${task.id}">Remove</button></td>
+            </tr>
+            `);
+        } else {
+            $('#viewTasks').append(`
+            <tr id="${task.id}">
+            <td>${task.name}</td>
+            <td>${task.description}</td>
+            <td>${task.completeByDate}</td>
+            <td><input type="checkbox" class="checkbox-in" data-id="${task.id}" data-complete="${task.isComplete}"></input></td>
+            <td><button class="remove-btn" data-id="${task.id}">Remove</button></td>
+            </tr>
+        `)}
+    }
     addStyling(tasks);
 } // end renderTasks
 
@@ -100,16 +113,17 @@ function removeTask() {
 // create function to change completed status and add CSS
 // features
 function handleCompleted() {
-    // console.log('handleCompleted wired');
+    // $(this).attr(checked)
+
     const taskIdToMark = $(this).data('id');
     let currentCompletedStatus = $(this).data('complete');
-    console.log(currentCompletedStatus);
+    // console.log(currentCompletedStatus);
     if (currentCompletedStatus === true) {
         currentCompletedStatus = false;
     } else if (currentCompletedStatus === false) {
         currentCompletedStatus = true;
     };
-    console.log(currentCompletedStatus);
+    // console.log(currentCompletedStatus);
     $.ajax({
         type: 'PUT',
         url: `/tasks/${taskIdToMark}`,
