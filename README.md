@@ -5,9 +5,9 @@
 
 *Duration: 2 day sprint*
 
-I created an application that allows a user to add tasks to a 'To Do' list. Once added, the user has the option to mark and unmark the task as completed as well as to remove the task completely from the list. 
+I created an application that allows a user to add tasks to a list. Once added, the user can mark and unmark a task as complete. The user also has the option to remove a task completely from the list. 
 
-To accomplish this, I first created an html layout with a section for adding a new task and a 'To Do' list to display all active tasks. Next, I utilized CRUD (Create, Read, Update and Delete) to wire routes for sending information to and from the client, server and database. Lastly, I used CSS styling to move the aesthetics of the page beyond the intrinsic HTML look.
+To accomplish this, I first created an html layout with sections for adding a new task and displaying existing tasks. Next, I utilized CRUD (Create, Read, Update and Delete) to wire routes for sending information to and from the client, server and database. Lastly, I used CSS styling to move the aesthetics of the page beyond the intrinsic HTML look.
 
 ## Screen Shots
 ---
@@ -18,45 +18,35 @@ To accomplish this, I first created an html layout with a section for adding a n
 #### Image 2
 ![alt text](images/checked.png)
 
-### Prerequisites
+## Prerequisites
+---
 
 - [Node.js](https://nodejs.org/en/)
-- [Postgres](https://www.postgresql.org/download/)
+- [PostgreSQL](https://www.postgresql.org/download/)
+- [Postico](https://eggerapps.at/postico/)
 
 ## Installation
+---
 
-- Run 'npm init --yes' in terminal to create package.json file and to install node modules
-- Run 'npm install express' in terminal to install express library
-- Run 'npm install pg' in terminal
-- Run 'npm start' to start server
-- Create database in SQL named 'weekend-to-do-app'. Use the code from the 'database.sql' file in the repository and to create table in 'weekend-to-do-app' database.
+1. Create a database named `weekend-to-do-app`.
 
-<!-- How do you get your application up and running? This is a step by step list for how another developer could get this project up and running. The good target audience in terms of knowledge, would be a fellow Primer from another cohort being able to spin up this project. Note that you do not need a paragraph here to intro Installation. It should be step-by-step.
+2. The query in the `database.sql` file is set up to create the necessary table to allow the application to run correctly. The project is built on [PostgreSQL](https://www.postgresql.org/download/), so you will need to have that installed. I recommend using [Postico](https://eggerapps.at/postico/) to run the query, as that was used to create it.
 
-If your application has secret keys (for example -- Twilio), make sure you tell them how to set that up, both in getting the key and then what to call it in the .env file.
+3. Open up your editor of choice and run an `npm install` in your terminal.
 
-Create a database named your database name,
-The queries in the tables.sql file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on Postgres, so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries,
-Open up your editor of choice and run an npm install
-Run npm run server in your terminal
-Run npm run client in your terminal
-The npm run client command will open up a new browser tab for you! -->
+4. Run `npm start` in your terminal to start the server.
 
 ## Usage
 ---
 
-<!-- How does someone use this application? Tell a user story here. -->
+1. To add a task, type the information into the input fields of the 'Add Task' section. Next, click the 'Add Task' button. The task will then be added to the list.
 
-<!-- 1. Enter a number into each input field and select the desired operator.
+3. To mark a task complete, click the task's checkbox in the 'Completed' column. This will gray out the task (see Screen Shots, Image 2). To undo this, simply uncheck the checkbox.
 
-2. Click the '=' button to perform the calculation and to have the result displayed beneath the input fields. All previous calculations and their results will be listed under 'Previous Calculations'.
-
-3. To clear the input fields, click the 'C' button. -->
+4. To remove a task completely from the list, click the task's 'Remove' button.
 
 ## Built With
 ---
-
-<!-- List technologies and frameworks here -->
 
 - HTML
 - CSS
@@ -70,9 +60,9 @@ The npm run client command will open up a new browser tab for you! -->
 ## Acknowledgment
 ---
 
-Thank you to Prime Digital Academy, my instructor and my classmates who equipped and helped me to make this application.
+Thank you to Prime Digital Academy, my instructor Matthew Black, and my classmates who equipped and helped me to create this application.
 
 ## Support
 ---
 
-If you have suggestions or issues, please email me at kbrown55347@gmail.com
+If you have suggestions or issues, please email me at kbrown55347@gmail.com.

@@ -5,7 +5,7 @@ const pool = require('../modules/pool.js');
 
 // GET Route
 taskRouter.get('/', (req, res) => {
-    console.log('GET /tasks');
+    // console.log('GET /tasks');
     const text = `SELECT * FROM "taskList"`;
     pool.query(text)
         .then((dbRes) => {
@@ -42,7 +42,7 @@ taskRouter.post('/', (req, res) => {
 
 // DELETE Route
 taskRouter.delete('/:id', (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     const taskIdToDelete = req.params.id;
     const sqlText = `
         DELETE FROM "taskList"
