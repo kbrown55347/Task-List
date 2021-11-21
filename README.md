@@ -3,13 +3,11 @@
 ## Description
 ---
 
-Duration: 2 days
+*Duration: 2 day sprint*
 
-<!-- Directly above this is how long it took you to develop the project. Your project description goes here. What problem did you solve? How did you solve it? -->
+I created an application that allows a user to add tasks to a 'To Do' list. Once added, the user has the option to mark and unmark the task as completed as well as to remove the task completely from the list. 
 
-<!-- I created an application that takes in two numbers and performs a calculation.
-
-To accomplish this, I first created a basic html application layout with two input fields, buttons for addition, subtraction, multiplication and division, an equals button, a 'C' button, an area to display the result from the current calculation and an area to display a list of previous calculations. I then added functionality on the client side to capture the input number values and the selected operation sign on the click of the '=' button. I then routed that information to be bundled and sent to the server side. Next, on the server side, I created a function to perform a calculation based on the information that was received. Then I created a function to bundle the input numbers, operator and answer in an object and then pushed that object to an array. Next, I wired that information to be sent to the client side and there I created a function to display the result of the current calculation and a history of all the previous calculations. Lastly, I created a function on the client side to clear the input number fields on the click of the 'C' button. -->
+To accomplish this, I first created an html layout with a section for adding a new task and a 'To Do' list to display all active tasks. Next, I utilized CRUD (Create, Read, Update and Delete) to wire routes for sending information to and from the client, server and database. Lastly, I used CSS styling to move the aesthetics of the page beyond the intrinsic HTML look.
 
 ## Screen Shots
 ---
@@ -32,7 +30,6 @@ To accomplish this, I first created a basic html application layout with two inp
 - Run 'npm install pg' in terminal
 - Run 'npm start' to start server
 - Create database in SQL named 'weekend-to-do-app'. Use the code from the 'database.sql' file in the repository and to create table in 'weekend-to-do-app' database.
-
 
 <!-- How do you get your application up and running? This is a step by step list for how another developer could get this project up and running. The good target audience in terms of knowledge, would be a fellow Primer from another cohort being able to spin up this project. Note that you do not need a paragraph here to intro Installation. It should be step-by-step.
 
