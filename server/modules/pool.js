@@ -1,8 +1,8 @@
 const pg = require('pg');
 const Pool = pg.Pool;
 const config = {
-    host: 'Localhost', // Location of our database.
-    database: 'weekend-to-do-app'  // Name of our database.
+    host: 'Localhost', // Location of database
+    database: 'weekend-to-do-app'  // Name of database
 };
 
 const pool = new Pool(config);
@@ -15,6 +15,6 @@ pool.on('error', (poolError) => {
     console.error(poolError);
 });
 
-// export pool object so we can use it for database 
-// connection elsewhere (i.e. server.js file)
+/* export pool object so it can be used 
+elsewhere for database connection */
 module.exports = pool;

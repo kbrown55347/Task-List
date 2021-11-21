@@ -1,17 +1,15 @@
 $(document).ready(onReady);
 
 function onReady() {
-    // call function to get values on click of 'add task' button
     getTasks();
+    // call function to add task on click of #add-btn
     $('#add-btn').on('click', handleAddTask);
-    // on click of delete button, call function to remove that task
+    // on click of remove button, call function to remove task from DOM
     $('#viewTasks').on('click', '.remove-btn', removeTask);
     $('#viewTasks').on('click', '.checkbox-in', handleCompleted);
-    // $('#viewTasks').on('click', '.checkbox-in', handleCompleted);
-    // $('#viewTasks').change('click', '.checkbox-in');
 };
 
-// create function to pull values from input fields
+// create function to collect values from input fields
 function handleAddTask() {
     let taskToAdd = {
         name: $('#task-name-in').val(),
@@ -19,23 +17,21 @@ function handleAddTask() {
         date: $('#date-in').val(),
         isComplete: false,
     };
-    saveTask(taskToAdd);
+    sendNewTask(taskToAdd);
     clearInputs();
-    console.log('In handleAddTask', taskToAdd);
-} // end handleAddTask
+    // console.log('In handleAddTask', taskToAdd);
+}; // end handleAddTask
 
 // create function to clear input values
 function clearInputs() {
     $('#task-name-in').val('');
     $('#descript-in').val('');
     $('#date-in').val('');
-    // console.log('Inputs clear');
-} //end clearInputs
+}; //end clearInputs
 
-function saveTask(newTask) {
-    console.log('in saveTask');
-    // ajax call for POST route to send
-    // new task to server
+// create function to send new task to server via POST route
+function sendNewTask(newTask) {
+    // console.log('in sendNewTask');
     $.ajax({
         type: 'POST',
         url: '/tasks',
@@ -46,7 +42,7 @@ function saveTask(newTask) {
     }).catch((error) => {
         console.error(error);
     });
-} // end saveTask
+}; // end sendNewTask
 
 // create function to wire GET '/tasks' route from server
 function getTasks() {
@@ -55,14 +51,11 @@ function getTasks() {
         url: '/tasks'
     }).then((response) => {
         renderTasks(response);
-        // addStyling after calling renderTasks because
-        // we need the tr of task to have specific task id
-        // addStyling(response);
         // console.log('in getTasks', response);
     }).catch((error) => {
         console.log('error in GET', error);
     });
-} // end getTasks
+}; // end getTasks
 
 // create function to append tasks to DOM
 function renderTasks(tasks) {
@@ -88,16 +81,14 @@ function renderTasks(tasks) {
             <td><input type="checkbox" class="checkbox-in" data-id="${task.id}" data-complete="${task.isComplete}"></input></td>
             <td><button class="remove-btn" data-id="${task.id}">Remove</button></td>
             </tr>
-        `)}
-    }
+        `)};
+    };
     addStyling(tasks);
-} // end renderTasks
+}; // end renderTasks
 
 // create function to remove task
 function removeTask() {
-    // console.log('remove me');
     const taskIdRemove = $(this).data('id');
-    // console.log(taskIdRemove);
     $(`#${taskIdRemove}`).remove();
     $.ajax({
         type: 'DELETE',
@@ -108,41 +99,36 @@ function removeTask() {
     }).catch((error) => {
         console.log('error in DELETE', error);
     });
-} // end removeTask
+}; // end removeTask
 
-// create function to change completed status and add CSS
-// features
+// create function to change completed status
 function handleCompleted() {
-    // $(this).attr(checked)
-
     const taskIdToMark = $(this).data('id');
     let currentCompletedStatus = $(this).data('complete');
-    // console.log(currentCompletedStatus);
-    if (currentCompletedStatus === true) {
+    if (currentCompletedStatus) {
         currentCompletedStatus = false;
-    } else if (currentCompletedStatus === false) {
+    } else if (!currentCompletedStatus) {
         currentCompletedStatus = true;
     };
-    // console.log(currentCompletedStatus);
     $.ajax({
         type: 'PUT',
         url: `/tasks/${taskIdToMark}`,
-        data: { completedStatus: currentCompletedStatus }
+        data: {completedStatus: currentCompletedStatus}
     }).then((res) => {
         getTasks();
     }).catch((error) => {
         console.error(error);
     })
-} // end handleCompleted
+}; // end handleCompleted
 
-
-// create function to add CSS features for completed tasks
+// create function to add or remove CSS features based on if task is complete or not
 function addStyling(tasks) {
     for (let task of tasks) {
+        let taskId = $(`#${task.id}`);
         if (task.isComplete) {
-            $(`#${task.id}`).addClass('elementComplete');
-        } else if ($(`#${task.id}`).hasClass('elementComplete') && task.isComplete === false) {
-            $(`#${task.id}`).removeClass('elementComplete');
+            taskId.addClass('elementComplete');
+        } else if (taskId.hasClass('elementComplete') && !task.isComplete) {
+            taskId.removeClass('elementComplete');
         }
     }
-}
+}; // end addStyling

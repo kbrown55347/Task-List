@@ -16,3 +16,4 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 - Run 'npm install express' in terminal to install express library
 - Run 'npm install pg' in terminal
 - Run 'npm start' to start server
+- Create database in SQL named 'weekend-to-do-app'. Use the code from the 'database.sql' file in the repository and to create table in 'weekend-to-do-app' database.
