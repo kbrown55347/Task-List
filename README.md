@@ -32,9 +32,9 @@ To accomplish this, I first created an html layout with sections for adding a ne
 
 2. The query in the `database.sql` file is set up to create the necessary table to allow the application to run correctly. The project is built on [PostgreSQL](https://www.postgresql.org/download/), so you will need to have that installed. I recommend using [Postico](https://eggerapps.at/postico/) to run the query, as that was used to create it.
 
-3. Open up your editor of choice and run an `npm install` in your terminal.
+3. Open your editor of choice and run an `npm install` in your terminal to install the project's node dependencies.
 
-4. Run `npm start` in your terminal to start the server.
+4. Run `npm start` in your terminal to start the server. Go to localhost:5000 in your browser to view it.
 
 ## Usage
 ---
